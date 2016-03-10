@@ -29,3 +29,19 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api/v1'], function () {
+
+    Route::post('raw-data', 'RawDataController@store');
+    Route::get('raw-data', 'RawDataController@index');
+
+    Route::post('words', [
+        'as' => 'post.words',
+        'uses' => 'WordsController@postWords'
+    ]);
+
+    Route::get('max-frequence', [
+        'as' => 'post.words',
+        'uses' => 'WordsController@wordFrequence'
+    ]);
+});
