@@ -35,6 +35,8 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api/v1'], function (
     Route::post('raw-data', 'RawDataController@store');
     Route::get('raw-data', 'RawDataController@index');
 
+//    Route::get('parse-data', 'ParserController@parse');
+
     Route::post('words', [
         'as' => 'post.words',
         'uses' => 'WordsController@postWords'

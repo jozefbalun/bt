@@ -17,12 +17,19 @@ class Word extends Model
      * @var array
      */
     protected $fillable = [
-        'word', 'weight', 'fixation_duration, fixation_count, left_pupil_size, right_pupil_size',
+        'word', 'weight', 'fixation_duration', 'fixation_count', 'left_pupil_size', 'right_pupil_size', 'parent_element',
     ];
 
-    public function participant()
+    protected $casts = [
+        'left_pupil_size' => 'integer',
+        'right_pupil_size' => 'integer',
+        'fixation_duration' => 'double',
+        'fixation_count' => 'integer',
+    ];
+
+    public function task()
     {
-        return $this->belongsTo(Participant::class);
+        return $this->belongsTo(Task::class);
     }
 
     public function finalWeight($word)

@@ -15,15 +15,15 @@ class CreateWordsTable extends Migration
         Schema::create('words', function (Blueprint $table) {
             $table->increments('id');
             $table->string('word');
-            $table->integer('fixation_duration');
+            $table->decimal('fixation_duration', 10, 2);
             $table->integer('fixation_count');
-            $table->integer('left_pupil_size');
-            $table->integer('right_pupil_size');
-            $table->integer('waight');
+            $table->decimal('left_pupil_size', 16, 16);
+            $table->decimal('right_pupil_size', 16, 16);
+            $table->decimal('weight', 10, 6);
             $table->string('class');
-            $table->string('url');
-            $table->integer('participant_id')->unsigned();
-            $table->foreign('participant_id')->references('id')->on('participants');
+            $table->string('parent_element');
+            $table->integer('task_id')->unsigned();
+            $table->foreign('task_id')->references('id')->on('tasks');
             $table->timestamps();
         });
     }

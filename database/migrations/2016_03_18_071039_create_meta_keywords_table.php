@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSessionsTable extends Migration
+class CreateMetaKeywordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('test_sessions', function (Blueprint $table) {
+        Schema::create('meta_keywords', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->timestamp('started_at');
-            $table->timestamp('ended_at');
+            $table->string('word');
+            $table->integer('task_num');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('test_sessions');
+        Schema::drop('meta_keywords');
     }
 }

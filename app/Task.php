@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TestSession extends Model
+class Task extends Model
 {
 
     public $dates = ['started_at', 'ended_at'];
@@ -15,11 +15,12 @@ class TestSession extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'started_at', 'ended_at',
+        'task', 'url', 'participant', 'title', 'started_at', 'ended_at',
     ];
 
-    public function participants()
+    public function words()
     {
-        return $this->hasMany(Participant::class);
+        return $this->hasMany(Word::class);
     }
+
 }

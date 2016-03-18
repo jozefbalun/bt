@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Participant;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\TestSession;
 use App\Word;
 
 class WordsController extends Controller
@@ -14,8 +12,7 @@ class WordsController extends Controller
     //
     public function postWords(Request $request)
     {
-        $session = TestSession::findOrCreate([$request->get('session')]);
-        $participant = Participant::findOrCreate([$request->get('participant')]);
+
 
         // zoberiem vsetku slova
         // zistim aka je max frekvencia
@@ -27,7 +24,7 @@ class WordsController extends Controller
             $w = new Word($word);
 
             $frequence = $w->wordNormaizeFrequence($word);
-            $session->participant()->words()->save($w);
+//            $session->participant()->words()->save($w);
         }
 
 //        $post->comments()->saveMany([
